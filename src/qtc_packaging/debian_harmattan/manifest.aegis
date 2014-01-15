@@ -1,0 +1,8 @@
+<aegis>
+   <request>
+	  <credential name="CAP::net_bind_service" />
+	  <credential name="CAP::net_admin" />
+	  <credential name="CAP::net_raw" />
+	  <for path="/opt/emumaster/bin/sixaxismonitor" />
+   </request>
+</aegis>

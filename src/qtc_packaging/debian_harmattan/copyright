@@ -1,0 +1,74 @@
+This package was debianized by elemental <mar.kazmierczak@gmail.com> on
+Wed, 24 Aug 2011 19:02:09 +0200.
+
+It was downloaded from <elemental-mk.blogspot.com>
+
+Upstream Author(s):
+
+	Marcin Kaźmierczak <mar.kazimerczak@gmail.com>
+
+Copyright:
+
+	<Copyright (C) 2011 Marcin Kaźmierczak>
+
+Licenses:
+
+ License for "snes" emulation binary:
+
+	Snes9x - Portable Super Nintendo Entertainment System (TM) emulator.
+
+	(c) Copyright 1996 - 2001 Gary Henderson (gary.henderson@ntlworld.com) and
+							  Jerremy Koot (jkoot@snes9x.com)
+
+	Super FX C emulator code
+	(c) Copyright 1997 - 1999 Ivar (ivar@snes9x.com) and
+							  Gary Henderson.
+	Super FX assembler emulator code (c) Copyright 1998 zsKnight and _Demo_.
+
+	DSP1 emulator code (c) Copyright 1998 Ivar, _Demo_ and Gary Henderson.
+	C4 asm and some C emulation code (c) Copyright 2000 zsKnight and _Demo_.
+	C4 C code (c) Copyright 2001 Gary Henderson (gary.henderson@ntlworld.com).
+
+	DOS port code contains the works of other authors. See headers in
+	individual files.
+
+	Snes9x homepage: http://www.snes9x.com
+
+	Permission to use, copy, modify and distribute Snes9x in both binary and
+	source form, for non-commercial purposes, is hereby granted without fee,
+	providing that this license information and copyright notice appear with
+	all copies and any derived work.
+
+	Snes9x is freeware for PERSONAL USE only. Commercial users should
+	seek permission of the copyright holders first. Commercial use includes
+	charging money for Snes9x or software derived from Snes9x.
+
+	The copyright holders request that bug fixes and improvements to the code
+	should be forwarded to them so everyone can benefit from the modifications
+	in future versions.
+
+ License for "pico" emulation binary:
+    Free for non-commercial use.
+    For commercial use, separate licencing terms must be obtained.
+
+ "base" library is distributed under GNU LESSER GENERAL PUBLIC LICENSE v3.
+
+ Any other file (except above) is distributed under GNU GENERAL PUBLIC LICENSE
+ or another compatible license if stated else in the file.
+
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ NES®, Nintendo Entertainment System®, Super NES®, Super Nintendo Entertainment
+ System® and GameBoy Advance® are trademarks of Nintendo Co., Limited
+ and its subsidiary companies.
+
+ PSX®, PlayStation®, are registred trademarks of their companies.
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The Debian packaging is (C) 2011, elemental <elemental@unknown> and
+is licensed under the GPL, see above.

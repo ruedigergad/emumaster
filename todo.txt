@@ -1,0 +1,2 @@
+ b saves in gba tasmanian dont work
+howto backup data

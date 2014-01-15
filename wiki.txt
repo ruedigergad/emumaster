@@ -1,0 +1,14 @@
+it is strongly recommended to name games/disks as you would before you use them,
+because program use name of the disk to store screenshots,states and others
+
+it is recommended to remove a disk from emumaster - it removes icon from home screen
+and removes saved states
+
+files extensions case sensitivity
+
+pad hotspots image
+howto make icon in the home screen
+howto pause, save, load, change settings
+howto update screen shot in the rom gallery
+howto donate
+howto sixaxis

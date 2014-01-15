@@ -1,0 +1,113 @@
+emumaster (0.3.0) unstable; urgency=low
+
+  * advanced launch introduced
+  * sixaxis function in emulation automatically set
+  * fixed scrolling in SectionScroller
+  * nes - 6502 cpu interrupts events fixed
+  * nes - pal timings corrected
+  * nes - mapper 5 fixed
+
+ -- elemental <mar.kazmierczak@gmail.com>  Wed, 15 Feb 2012 23:25:16 +0100
+
+emumaster (0.2.2) unstable; urgency=low
+
+  * enabled scaling/rotating sprites in megacd emulation
+  * pause on incoming call
+  * [bug] psx emulation segfault - fixed
+
+ -- elemental <mar.kazmierczak@gmail.com>  Tue, 24 Jan 2012 16:09:02 +0100
+
+emumaster (0.2.1) unstable; urgency=low
+
+  * audio enable/disable global option
+  * splash added
+  * [bug] PadB doesn't work in pico emulation - fixed
+
+ -- elemental <mar.kazmierczak@gmail.com>  Thu, 05 Jan 2012 20:46:58 +0100
+
+emumaster (0.2.0) unstable; urgency=low
+
+  * genesis/megadrive/megacd support
+  * landscape support
+  * bilinear filtering
+  * better search
+  * restart confirmation dialog to prevent accidental pushing on restart button
+  * keyboard configured as pad-a by default
+  * do not clear screen if fullscreen is forced
+  * [bug] fullscreen option didn't work as expected - fixed
+  * [bug] keyboard conf - l1/r1 has been reversed with start/select
+  * [bug] l2/r2 has same values as l1/r1 - fixed
+  * [bug] if games have different extensions they are incorrectly sorted in disk gallery - fixed
+  * [bug] mulitplayer don't work in psx - fixed
+  * [bug] strange sixaxis animation when identify - fixed
+
+ -- elemental <mar.kazmierczak@gmail.com>  Fri, 23 Dec 2011 11:44:11 +0100
+
+emumaster (0.1.1) unstable; urgency=high
+
+  * accelerometer calibration
+  * keyboard configuration (gamepad mapping)
+  * emulation can run in the background (global option)
+  * 10 seconds bug fixed
+
+ -- elemental <mar.kazmierczak@gmail.com>  Tue, 13 Dec 2011 08:39:17 +0100
+
+emumaster (0.1.0) unstable; urgency=low
+
+  * amiga emulation added
+  * safety check for idle preventing battery drain
+  * better error handling
+  * display is not suspending while playing game
+  * new look of the pad
+  * configurable input devices
+  * save/load error handling
+  * global/local settings introduced
+  * added search field
+  * sixaxis support
+  * completely redesigned UI
+  * favourites category
+  * workaround for sound bug (e.g. fix Mario Kart) - thanks to javispedro
+  * added name filters based on disk extension
+  * unified in-game menu
+  * better scaler when selecting an icon for the home screen
+  * information on few first runs
+  * N900 build
+
+ -- elemental <mar.kazmierczak@gmail.com>  Wed, 01 Sep 2011 10:02:09 +0200
+
+emumaster (0.0.2) unstable; urgency=low
+
+  * added gba emulation
+  * added snes emulation
+  * added psx <alpha> emulation
+  * added page to select the console
+  * user can select his own cover in disk gallery
+  * states are compressed now
+  * pad look redesigned (in-game exit button and L/R buttons added as well)
+  * settings look refreshed
+  * settings are saved now
+  * added pad opacity option
+  * added keep aspect ratio option
+  * added option to remove icon from home screen (disk gallery)
+  * added item in menu to remove disk (disk gallery)
+  * added item in menu to run game with autoload disabled (disk gallery)
+  * switched to asynchronous pulse audio
+  * added accelerometer support
+  * volume buttons now works correctly
+  * redesigned architecture to speed up things
+  * fixed bug in pad: when you touch on edge pad didn't work
+  * fixed crash on pause button
+  * render method for nes ppu can now be selected
+  * nes game genie codes enable/disable fixed
+  * nes empahasis/mask fix (several titles displayed white screen)
+  * nes mappers:
+     added: 200,201,202,222,225,226,227,228,229,230,231,232,233,235,236,240,241,242,243,244,246,251,252,254,255
+	 fixed: 2
+
+ -- elemental <mar.kazmierczak@gmail.com>  Wed, 01 Sep 2011 10:02:09 +0200
+
+emumaster (0.0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- elemental <mar.kazmierczak@gmail.com>  Wed, 24 Aug 2011 19:02:09 +0200
