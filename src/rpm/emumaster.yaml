@@ -1,0 +1,49 @@
+Name: emumaster
+Summary: An emulator for different gaming consoles etc.
+Version: 0.3.1
+Release: 1
+Group: Amusements/Games
+License: GPLv2
+URL: https://bitbucket.org/elemental/emumaster/wiki/Home
+#Patches:
+#    - enable-gba.patch
+#    - enable-amiga.patch
+#    - enable-nes-and-pico.patch
+#    - enable_audio.patch
+Sources:
+    - "%{name}_%{version}.tar.gz"
+Description:
+ EmuMaster emulates popular consoles. 
+ It is written in Qt/QML. 
+ Item at Nokia Store store.ovi.com/content/207988 
+ Donate version store.ovi.com/content/268920
+PkgBR:
+    - bluez-configs-mer
+PkgConfigBR:
+    - Qt5Qml
+    - qmfclient5
+    - Qt5Core
+    - Qt5Quick
+    - Qt5Gui
+    - Qt5OpenGL
+    - Qt5Widgets
+    - Qt5Network
+    - Qt5Sensors
+    - Qt5SystemInfo
+    - libxml-2.0
+    - libpulse
+    - gstreamer-1.0
+      #- audioresource
+      #    - sailfishapp >= 0.0.10
+      #    - qdeclarative-boostable
+      #    - QtSystemInfo
+      #    - qmsystem2
+#Requires:
+    #    - libqtfeedback1
+Configure: none
+Builder: none
+Files:
+    - "%{_datadir}/applications/diskgallery.desktop"
+    - "%{_datadir}/policy/etc/syspart.conf.d/*"
+    - "/opt/%{name}"
+    - "/opt/emumaster/lib/libbase.so.1.0.0"
