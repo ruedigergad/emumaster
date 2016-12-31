@@ -21,12 +21,81 @@ unix {
     INSTALLS += target
 }
 
+QMAKE_CFLAGS_RELEASE = -O2\
+    -g\
+    -pipe\
+    -Wall\
+    -Wp,-D_FORTIFY_SOURCE=2\
+    -fexceptions\
+    -fstack-protector\
+    --param=ssp-buffer-size=4\
+    -Wformat\
+    -Wformat-security\
+    -fmessage-length=0\
+    -march=armv7-a\
+    -mfloat-abi=hard\
+    -mfpu=vfpv3-d16\
+    -marm\
+    -mno-thumb-interwork\
+    -Wno-psabi
+QMAKE_CFLAGS_DEBUG = -O2\
+    -g\
+    -pipe\
+    -Wall\
+    -Wp,-D_FORTIFY_SOURCE=2\
+    -fexceptions\
+    -fstack-protector\
+    --param=ssp-buffer-size=4\
+    -Wformat\
+    -Wformat-security\
+    -fmessage-length=0\
+    -march=armv7-a\
+    -mfloat-abi=hard\
+    -mfpu=vfpv3-d16\
+    -marm\
+    -mno-thumb-interwork\
+    -Wno-psabi
+QMAKE_CXXFLAGS_RELEASE = -O2\
+    -g\
+    -pipe\
+    -Wall\
+    -Wp,-D_FORTIFY_SOURCE=2\
+    -fexceptions\
+    -fstack-protector\
+    --param=ssp-buffer-size=4\
+    -Wformat\
+    -Wformat-security\
+    -fmessage-length=0\
+    -march=armv7-a\
+    -mfloat-abi=hard\
+    -mfpu=vfpv3-d16\
+    -marm\
+    -mno-thumb-interwork\
+    -Wno-psabi
+QMAKE_CXXFLAGS_DEBUG = -O2\
+    -g\
+    -pipe\
+    -Wall\
+    -Wp,-D_FORTIFY_SOURCE=2\
+    -fexceptions\
+    -fstack-protector\
+    --param=ssp-buffer-size=4\
+    -Wformat\
+    -Wformat-security\
+    -fmessage-length=0\
+    -march=armv7-a\
+    -mfloat-abi=hard\
+    -mfpu=vfpv3-d16\
+    -marm\
+    -mno-thumb-interwork\
+    -Wno-psabi
+
 DEFINES += BASE_PROJECT
 
 HEADERS += \
     hostaudio.h \
     hostinput.h \
-	base_global.h \
+    base_global.h \
     pathmanager.h \
     statelistmodel.h \
     configuration.h \
@@ -42,7 +111,7 @@ HEADERS += \
     audioringbuffer.h \
     frameitem.h \
     memutils.h \
-	stateimageprovider.h 
+    stateimageprovider.h
 #    glpainter.h \
 #    hostvideo.h \
 #    accelinputdevice.h
@@ -64,7 +133,7 @@ SOURCES += \
     stringlistproxy.cpp \
     frameitem.cpp \
     memutils.cpp \
-	stateimageprovider.cpp 
+    stateimageprovider.cpp
 #    glpainter.cpp \
 #    hostvideo.cpp \
 #    accelinputdevice.cpp
@@ -81,7 +150,7 @@ unix {
         ../../qml/base/NesCheats.qml \
         ../../qml/base/SnesSettingsPage.qml \
         ../../qml/base/GbaSettingsPage.qml \
-		../../qml/base/GbaCheats.qml \
+        ../../qml/base/GbaCheats.qml \
         ../../qml/base/PsxSettingsPage.qml \
         ../../qml/base/AmigaSettingsPage.qml \
         ../../qml/base/PicoSettingsPage.qml \
@@ -112,8 +181,8 @@ unix {
         ../../data/shader/sharpen.vsh \
         ../../data/shader/sharpen.fsh \
 
-	qmlimg.path = /opt/emumaster/qml/img
-	qmlimg.files = \
+    qmlimg.path = /opt/emumaster/qml/img
+    qmlimg.files = \
         ../../qml/img/input-accel.png \
         ../../qml/img/input-keyb.png \
         ../../qml/img/input-sixaxis.png \
