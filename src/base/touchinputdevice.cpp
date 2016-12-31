@@ -51,8 +51,8 @@ enum ButtonsInImage {
 TouchInputDevice::TouchInputDevice(QObject *parent) :
 	HostInputDevice("touch", QObject::tr("Touch Screen"), parent),
 	m_numPoints(0),
-	m_areaSize(240),
-	m_diagonalAreaSize(240/4),
+    m_areaSize(512),
+    m_diagonalAreaSize(512/4),
 	m_gridVisible(true),
 	m_lrVisible(false),
 	m_gridColor(Qt::white),

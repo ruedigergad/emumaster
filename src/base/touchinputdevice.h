@@ -83,9 +83,9 @@ private slots:
 	void onEmuFunctionChanged();
 private:
 	static const int MaxPoints = 4;
-	static const int ButtonWidth = 80;
-	static const int ButtonHeight = 64;
-	static const int PaintedButtonSize = 64;
+    static const int ButtonWidth = 256;
+    static const int ButtonHeight = 192;
+    static const int PaintedButtonSize = 192;
 
 	void setupEmuFunctionList();
 	void convertPad();
