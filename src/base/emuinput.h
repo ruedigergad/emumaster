@@ -17,9 +17,12 @@
 #define EMUINPUT_H
 
 #include "base_global.h"
+#include <QObject>
 
-class BASE_EXPORT EmuPad
+class BASE_EXPORT EmuPad : public QObject
 {
+    Q_OBJECT
+    Q_ENUMS(Button)
 public:
 	enum Button {
 		Button_Right	= (1 <<  0),
@@ -39,7 +42,10 @@ public:
 
 		Button_Start	= (1 << 12),
 		Button_Select	= (1 << 13)
-	};
+    };
+
+    explicit EmuPad(QObject *parent = 0):QObject(parent){};
+
 	void setButtons(int buttons);
 	int buttons() const;
 private:

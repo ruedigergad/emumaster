@@ -364,6 +364,7 @@ void EmuView::registerClassesInQml()
 {
 	qmlRegisterType<StringListProxy>("EmuMaster", 1, 0, "StringListProxy");
 	qmlRegisterType<FrameItem>("EmuMaster", 1, 0, "FrameItem");
+    qmlRegisterType<EmuPad>("EmuMaster", 1, 0, "EmuPad");
     m_view->rootContext()->setContextProperty("emuView", this);
 	m_view->rootContext()->setContextProperty("emu", static_cast<QObject *>(m_emu));
 	m_view->rootContext()->setContextProperty("stateListModel", static_cast<QObject *>(m_stateListModel));
