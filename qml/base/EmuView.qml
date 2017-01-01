@@ -25,7 +25,7 @@ ApplicationWindow
                 anchors.fill: parent
 
                 IconButton {
-                    icon.source: "../../data/settings_button.png"
+                    icon.source: "../../data/buttons/settings.png"
                     x: 0
                     y: 0
                     onClicked: {
