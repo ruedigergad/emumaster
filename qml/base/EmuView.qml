@@ -5,6 +5,9 @@ import QtMultimedia 5.0
 
 ApplicationWindow
 {
+    property int _baseUnitWidth: 960
+    property int _baseControlBoxWidth: _baseUnitWidth / 5
+
     property bool startupAudioHack: true
 
     Timer {
@@ -22,16 +25,56 @@ ApplicationWindow
             FrameItem {
                 id: frameItem
 
+                property double scalingFactor: frameItem.width / _baseUnitWidth
+
                 anchors.fill: parent
 
                 IconButton {
                     icon.source: "../../data/buttons/settings.png"
+
+                    scale: frameItem.scalingFactor
+
                     x: 0
                     y: 0
+
                     onClicked: {
+                        console.log("Opening settings page...")
                         emuView.pause()
                         pageStack.push(settingsPage)
                     }
+                }
+
+                IconButton {
+                    icon.source: "../../data/buttons/close.png"
+
+                    scale: frameItem.scalingFactor
+
+                    x: frameItem.width - this.width
+                    y: 0
+
+                    onClicked: {
+                        console.log("Closing...")
+                    }
+                }
+
+                Rectangle {
+                    color: "blue"
+
+                    x: 0
+                    y: frameItem.height - this.height
+
+                    height: this.width
+                    width: _baseControlBoxWidth * frameItem.scalingFactor
+                }
+
+                Rectangle {
+                    color: "red"
+
+                    x: frameItem.width - this.width
+                    y: frameItem.height - this.height
+
+                    height: this.width
+                    width: _baseControlBoxWidth * frameItem.scalingFactor
                 }
             }
         }
