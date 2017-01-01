@@ -1,9 +1,17 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import EmuMaster 1.0
+import QtMultimedia 5.0
 
 ApplicationWindow
 {
+    property bool startupAudioHack: true
+
+    Timer {
+        interval: 500; running: true; repeat: false
+        onTriggered: emuView.pause()
+    }
+
     initialPage: Page {
         allowedOrientations: Orientation.Landscape
 
@@ -16,15 +24,15 @@ ApplicationWindow
 
                 anchors.fill: parent
 
-		IconButton {
-			icon.source: "../../data/settings_button.png"
-			x: 0
-			y: 0
-			onClicked: {
-				emuView.pause()
-				pageStack.push(settingsPage)
-			}
-		}
+                IconButton {
+                    icon.source: "../../data/settings_button.png"
+                    x: 0
+                    y: 0
+                    onClicked: {
+                        emuView.pause()
+                        pageStack.push(settingsPage)
+                    }
+                }
             }
         }
     }
@@ -33,8 +41,22 @@ ApplicationWindow
         frameItem.setEmuView(emuView)
     }
 
+    Connections {
+        target: emuView
+        onPauseStage2Finished: {
+            if (startupAudioHack) {
+                emuView.sleepMs(100)
+                emuView.showEmulationView()
+                emuView.resume()
+                startupAudioHack = false
+            }
+        }
+    }
+
     SettingsPage {
         id: settingsPage
     }
+
+    MediaPlayer { }
 }
 
