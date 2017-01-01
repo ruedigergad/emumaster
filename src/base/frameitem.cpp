@@ -34,12 +34,12 @@ QSGNode* FrameItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
     }
 
     node->setRect(boundingRect());
-    printFps();
+    updateFps();
 
     return node;
 }
 
-void FrameItem::printFps()
+void FrameItem::updateFps()
 {
     // calculate fps
     m_fpsCounter++;

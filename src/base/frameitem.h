@@ -54,7 +54,7 @@ private:
 	int m_fpsCounter;
 	QTime m_fpsCounterTime;
 
-    void printFps();
+    void updateFps();
 };
 
 #endif // FRAMEITEM_H
