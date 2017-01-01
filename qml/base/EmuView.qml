@@ -27,7 +27,7 @@ import QtMultimedia 5.0
 ApplicationWindow
 {
     property int _baseUnitWidth: 960
-    property int _baseControlBoxWidth: _baseUnitWidth / 5
+    property int _baseControlBoxWidth: 256
 
     property bool startupAudioHack: true
 
