@@ -56,8 +56,7 @@ ApplicationWindow
 
                     scale: frameItem.scalingFactor
 
-                    x: 0
-                    y: 0
+                    anchors {left: parent.left; top: parent.top}
 
                     onClicked: {
                         console.log("Opening settings page...")
@@ -71,8 +70,7 @@ ApplicationWindow
 
                     scale: frameItem.scalingFactor
 
-                    x: frameItem.width - this.width
-                    y: 0
+                    anchors {right: parent.right; top: parent.top}
 
                     onClicked: {
                         console.log("Closing...")
@@ -80,24 +78,78 @@ ApplicationWindow
                     }
                 }
 
-                Rectangle {
-                    color: "blue"
-
-                    x: 0
-                    y: frameItem.height - this.height
+                Item {
+                    anchors {left: parent.left; bottom: parent.bottom}
 
                     height: this.width
                     width: _baseControlBoxWidth * frameItem.scalingFactor
+
+                    opacity: 0.5
+
+                    IconButton {
+                        icon.source: "../../data/buttons/up.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/right.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {right: parent.right; verticalCenter: parent.verticalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/down.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/left.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+                    }
                 }
 
-                Rectangle {
-                    color: "red"
-
-                    x: frameItem.width - this.width
-                    y: frameItem.height - this.height
+                Item {
+                    anchors {right: parent.right; bottom: parent.bottom}
 
                     height: this.width
                     width: _baseControlBoxWidth * frameItem.scalingFactor
+
+                    opacity: 0.5
+
+                    IconButton {
+                        icon.source: "../../data/buttons/x.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/a.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {right: parent.right; verticalCenter: parent.verticalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/b.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+                    }
+
+                    IconButton {
+                        icon.source: "../../data/buttons/y.png"
+                        scale: frameItem.scalingFactor
+
+                        anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+                    }
                 }
             }
         }
