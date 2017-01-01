@@ -18,20 +18,20 @@
 
 #include <QImage>
 #include <QPainter>
-#include <QQuickPaintedItem>
+#include <QQuickItem>
 #include <QTime>
 #include <QTouchEvent>
 
 class EmuView;
 
-class FrameItem : public QQuickPaintedItem
+class FrameItem : public QQuickItem
 {
     Q_OBJECT
 
 public:
     FrameItem(QQuickItem *parent = 0);
 
-    void paint(QPainter *painter);
+    QSGNode* updatePaintNode(QSGNode *, UpdatePaintNodeData *);
 
     Q_INVOKABLE void setEmuView(QObject *emuView);
     
@@ -51,7 +51,6 @@ private:
 	int m_fpsCounter;
 	QTime m_fpsCounterTime;
 
-    void paintFps(QPainter *painter);
     void printFps();
 };
 
