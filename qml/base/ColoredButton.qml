@@ -21,7 +21,8 @@ Rectangle {
     radius: this.width / 2
 
     property alias text: buttonText.text
-    signal clicked()
+    property alias pressed: buttonArea.pressed
+    signal onPressedChanged()
 
     Text {
         id: buttonText
@@ -34,6 +35,6 @@ Rectangle {
     MouseArea {
         id: buttonArea
         anchors.fill: parent
-        onClicked: button.clicked()
+        onPressedChanged: button.onPressedChanged()
     }
 }

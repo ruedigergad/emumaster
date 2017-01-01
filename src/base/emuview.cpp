@@ -280,14 +280,17 @@ void EmuView::onFrameGenerated(bool videoOn)
     EmuInput *emuInput = m_emu->input();
     memset32(emuInput, 0, sizeof(EmuInput)/4);
     emuInput->pad[0].setButtons(m_padButtonsPressed[0]);
-    m_padButtonsPressed[0] = 0;
     emuInput->pad[1].setButtons(m_padButtonsPressed[1]);
-    m_padButtonsPressed[1] = 0;
 }
 
 void EmuView::addButtonPress(int pad, int buttonPress)
 {
     m_padButtonsPressed[pad] |= buttonPress;
+}
+
+void EmuView::removeButtonPress(int pad, int buttonPress)
+{
+    m_padButtonsPressed[pad] &= ~buttonPress;
 }
 
 int EmuView::determineLoadSlot(const QStringList &args)

@@ -74,6 +74,7 @@ public:
 
     Q_INVOKABLE void sleepMs(unsigned long msecs) { QThread::msleep(msecs); }
     Q_INVOKABLE void addButtonPress(int pad, int buttonPress);
+    Q_INVOKABLE void removeButtonPress(int pad, int buttonPress);
 
 public slots:
 	bool close();

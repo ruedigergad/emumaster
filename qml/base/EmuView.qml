@@ -92,9 +92,12 @@ ApplicationWindow
                         scale: frameItem.scalingFactor
                         anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
 
-                        onClicked: {
-                            console.log("Up clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_Up)
+                        onDownChanged: {
+                            if (down) {
+                                emuView.addButtonPress(0, EmuPad.Button_Up)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_Up)
+                            }
                         }
                     }
 
@@ -103,9 +106,12 @@ ApplicationWindow
                         scale: frameItem.scalingFactor
                         anchors {right: parent.right; verticalCenter: parent.verticalCenter}
 
-                        onClicked: {
-                            console.log("Right clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_Right)
+                        onDownChanged: {
+                            if (down) {
+                                emuView.addButtonPress(0, EmuPad.Button_Right)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_Right)
+                            }
                         }
                     }
 
@@ -114,9 +120,12 @@ ApplicationWindow
                         scale: frameItem.scalingFactor
                         anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
 
-                        onClicked: {
-                            console.log("Down clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_Down)
+                        onDownChanged: {
+                            if (down) {
+                                emuView.addButtonPress(0, EmuPad.Button_Down)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_Down)
+                            }
                         }
                     }
 
@@ -125,9 +134,12 @@ ApplicationWindow
                         scale: frameItem.scalingFactor
                         anchors {left: parent.left; verticalCenter: parent.verticalCenter}
 
-                        onClicked: {
-                            console.log("Left clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_Left)
+                        onDownChanged: {
+                            if (down) {
+                                emuView.addButtonPress(0, EmuPad.Button_Left)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_Left)
+                            }
                         }
                     }
                 }
@@ -147,9 +159,12 @@ ApplicationWindow
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "X"
 
-                        onClicked: {
-                            console.log("X clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_X)
+                        onPressedChanged: {
+                            if (pressed) {
+                                emuView.addButtonPress(0, EmuPad.Button_X)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_X)
+                            }
                         }
                     }
 
@@ -160,9 +175,12 @@ ApplicationWindow
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "A"
 
-                        onClicked: {
-                            console.log("A clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_A)
+                        onPressedChanged: {
+                            if (pressed) {
+                                emuView.addButtonPress(0, EmuPad.Button_A)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_A)
+                            }
                         }
                     }
 
@@ -173,9 +191,12 @@ ApplicationWindow
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "B"
 
-                        onClicked: {
-                            console.log("B clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_B)
+                        onPressedChanged: {
+                            if (pressed) {
+                                emuView.addButtonPress(0, EmuPad.Button_B)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_B)
+                            }
                         }
                     }
 
@@ -186,9 +207,12 @@ ApplicationWindow
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "Y"
 
-                        onClicked: {
-                            console.log("Y clicked...")
-                            emuView.addButtonPress(0, EmuPad.Button_Y)
+                        onPressedChanged: {
+                            if (pressed) {
+                                emuView.addButtonPress(0, EmuPad.Button_Y)
+                            } else {
+                                emuView.removeButtonPress(0, EmuPad.Button_Y)
+                            }
                         }
                     }
                 }
