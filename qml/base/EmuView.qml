@@ -27,7 +27,8 @@ import QtMultimedia 5.0
 ApplicationWindow
 {
     property int _baseUnitWidth: 960
-    property int _baseControlBoxWidth: 256
+    property int _baseUnitButtonWidth: 64
+    property int _baseControlBoxWidth: _baseUnitButtonWidth * 4
 
     property bool startupAudioHack: true
 
@@ -84,34 +85,46 @@ ApplicationWindow
                     height: this.width
                     width: _baseControlBoxWidth * frameItem.scalingFactor
 
-                    opacity: 0.5
+                    opacity: 0.6
 
                     IconButton {
                         icon.source: "../../data/buttons/up.png"
                         scale: frameItem.scalingFactor
-
                         anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+
+                        onClicked: {
+                            console.log("Up clicked...")
+                        }
                     }
 
                     IconButton {
                         icon.source: "../../data/buttons/right.png"
                         scale: frameItem.scalingFactor
-
                         anchors {right: parent.right; verticalCenter: parent.verticalCenter}
+
+                        onClicked: {
+                            console.log("Right clicked...")
+                        }
                     }
 
                     IconButton {
                         icon.source: "../../data/buttons/down.png"
                         scale: frameItem.scalingFactor
-
                         anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+
+                        onClicked: {
+                            console.log("Down clicked...")
+                        }
                     }
 
                     IconButton {
                         icon.source: "../../data/buttons/left.png"
                         scale: frameItem.scalingFactor
-
                         anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+
+                        onClicked: {
+                            console.log("Left clicked...")
+                        }
                     }
                 }
 
@@ -123,32 +136,52 @@ ApplicationWindow
 
                     opacity: 0.5
 
-                    IconButton {
-                        icon.source: "../../data/buttons/x.png"
-                        scale: frameItem.scalingFactor
-
+                    ColoredButton {
                         anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+                        color: "blue"
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
+                        text: "X"
+
+                        onClicked: {
+                            console.log("X clicked...")
+                        }
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/a.png"
-                        scale: frameItem.scalingFactor
-
+                    ColoredButton {
                         anchors {right: parent.right; verticalCenter: parent.verticalCenter}
+                        color: "red"
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
+                        text: "A"
+
+                        onClicked: {
+                            console.log("A clicked...")
+                        }
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/b.png"
-                        scale: frameItem.scalingFactor
-
+                    ColoredButton {
                         anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+                        color: "yellow"
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
+                        text: "B"
+
+                        onClicked: {
+                            console.log("B clicked...")
+                        }
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/y.png"
-                        scale: frameItem.scalingFactor
-
+                    ColoredButton {
                         anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+                        color: "green"
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
+                        text: "Y"
+
+                        onClicked: {
+                            console.log("Y clicked...")
+                        }
                     }
                 }
             }
