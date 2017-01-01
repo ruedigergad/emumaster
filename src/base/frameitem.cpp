@@ -41,7 +41,6 @@ QSGNode* FrameItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
 
 void FrameItem::updateFps()
 {
-    // calculate fps
     m_fpsCounter++;
     if (m_fpsCounterTime.elapsed() >= 1000) {
         m_fpsCount = m_fpsCounter;
@@ -59,11 +58,4 @@ void FrameItem::setEmuView(QObject *emuView) {
     connect(m_emuView, SIGNAL(videoFrameChanged(QImage)), this, SLOT(handleNewFrame(QImage)));
 
     qDebug() << "FrameItem Bounding Rectangle: " << boundingRect().width() << "x" << boundingRect().height();
-
-//    m_emuView->hostInput()->touchInputDevice()->setHeight((int) contentsBoundingRect().height());
-//    m_emuView->hostInput()->touchInputDevice()->setWidth((int) contentsBoundingRect().width());
-}
-
-void FrameItem::touchEvent(QTouchEvent *touchEvent) {
-    m_emuView->hostInput()->processTouch(touchEvent);
 }

@@ -41,9 +41,6 @@ signals:
 public slots:
     void handleNewFrame(QImage frame);
 
-protected:
-    void touchEvent(QTouchEvent * touchEvent);
-
 private:
     EmuView *m_emuView;
     QImage m_currentFrame;
