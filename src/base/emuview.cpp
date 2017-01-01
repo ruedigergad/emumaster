@@ -99,8 +99,6 @@ EmuView::EmuView(Emu *emu, const QString &diskFileName, QQuickView *view, QObjec
 	registerClassesInQml();
     m_view->setSource(QUrl("/opt/emumaster/qml/base/EmuView.qml"));
     m_view->show();
-
-//    showEmulationView();
 }
 
 EmuView::~EmuView()
@@ -215,8 +213,10 @@ void EmuView::saveScreenShotIfNotExists()
 {
 	QString diskTitle = QFileInfo(m_diskFileName).completeBaseName();
 	QString path = pathManager.screenShotPath(diskTitle);
-//	if (!QFile::exists(path))
+
+    if (!QFile::exists(path)) {
 		saveScreenShot();
+    }
 }
 
 void EmuView::saveScreenShot()
@@ -261,12 +261,14 @@ void EmuView::parseConfArg(const QString &arg)
 void EmuView::onFrameGenerated(bool videoOn)
 {
 	m_safetyCheck = true;
+
 	if (m_audioEnable) {
 		m_hostAudio->sendFrame();
     }
-	if (videoOn)
-//		emit videoFrameChanged(m_emu->frame().copy());
+
+    if (videoOn) {
 		emit videoFrameChanged(m_emu->frame().copy(m_emu->videoSrcRect().toRect()));
+    }
 	// sync input with the emulation
 	m_hostInput->sync();
 }
@@ -417,38 +419,10 @@ void EmuView::focusOutEvent(QFocusEvent *)
 //		pause();
 }
 
-#if defined(MEEGO_EDITION_HARMATTAN)
-//#include <QX11Info>
-//#include <X11/Xatom.h>
-//#include <X11/Xlib.h>
-#endif
-
 /*! Enables/disables swipe. */
 void EmuView::setSwipeEnabled(bool on)
 {
-#if defined(MEEGO_EDITION_HARMATTAN)
-//	Window w = effectiveWinId();
-//	Display *dpy = QX11Info::display();
-//	Atom atom;
-
-//	uint customRegion[4];
-//	customRegion[0] = 0;
-//	customRegion[1] = 0;
-//	customRegion[2] = width();
-//	customRegion[3] = height();
-
-//	atom = XInternAtom(dpy, "_MEEGOTOUCH_CUSTOM_REGION", False);
-//	if (!on) {
-//		XChangeProperty(dpy, w,
-//						atom, XA_CARDINAL, 32, PropModeReplace,
-//						reinterpret_cast<unsigned char *>(&customRegion[0]), 4);
-//	} else {
-//		XDeleteProperty(dpy, w, atom);
-//	}
 	Q_UNUSED(on)
-#else
-	Q_UNUSED(on)
-#endif
 }
 
 //-------------------------------SETTINGS SECTION-------------------------------
@@ -482,11 +456,6 @@ QVariant EmuView::loadOptionFromSettings(QSettings &s, const QString &name) cons
 
 void EmuView::setFpsVisible(bool on)
 {
-//	if (m_hostVideo->isFpsVisible() != on) {
-//		m_hostVideo->setFpsVisible(on);
-//		emConf.setValue("fpsVisible", on);
-//		emit fpsVisibleChanged();
-//	}
 }
 
 bool EmuView::isFpsVisible() const

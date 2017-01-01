@@ -67,4 +67,3 @@ void FrameItem::setEmuView(QObject *emuView) {
 void FrameItem::touchEvent(QTouchEvent *touchEvent) {
     m_emuView->hostInput()->processTouch(touchEvent);
 }
-
