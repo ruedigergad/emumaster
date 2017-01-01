@@ -27,8 +27,8 @@ import QtMultimedia 5.0
 ApplicationWindow
 {
     property int _baseUnitWidth: 960
-    property int _baseUnitButtonWidth: 64
-    property int _baseControlBoxWidth: _baseUnitButtonWidth * 4
+    property int _baseUnitButtonWidth: 96
+    property int _baseControlBoxWidth: 256
 
     property bool startupAudioHack: true
 
@@ -87,60 +87,48 @@ ApplicationWindow
 
                     opacity: 0.6
 
-                    IconButton {
-                        icon.source: "../../data/buttons/up.png"
-                        scale: frameItem.scalingFactor
+                    MultiTouchIconButton {
+                        source: "../../data/buttons/up.png"
+
                         anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
 
-                        onDownChanged: {
-                            if (down) {
-                                emuView.addButtonPress(0, EmuPad.Button_Up)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_Up)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_Up)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_Up)
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/right.png"
-                        scale: frameItem.scalingFactor
+                    MultiTouchIconButton {
+                        source: "../../data/buttons/right.png"
+
                         anchors {right: parent.right; verticalCenter: parent.verticalCenter}
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
 
-                        onDownChanged: {
-                            if (down) {
-                                emuView.addButtonPress(0, EmuPad.Button_Right)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_Right)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_Right)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_Right)
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/down.png"
-                        scale: frameItem.scalingFactor
+                    MultiTouchIconButton {
+                        source: "../../data/buttons/down.png"
+
                         anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
 
-                        onDownChanged: {
-                            if (down) {
-                                emuView.addButtonPress(0, EmuPad.Button_Down)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_Down)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_Down)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_Down)
                     }
 
-                    IconButton {
-                        icon.source: "../../data/buttons/left.png"
-                        scale: frameItem.scalingFactor
-                        anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+                    MultiTouchIconButton {
+                        source: "../../data/buttons/left.png"
 
-                        onDownChanged: {
-                            if (down) {
-                                emuView.addButtonPress(0, EmuPad.Button_Left)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_Left)
-                            }
-                        }
+                        anchors {left: parent.left; verticalCenter: parent.verticalCenter}
+                        height: this.width
+                        width: _baseUnitButtonWidth * frameItem.scalingFactor
+
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_Left)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_Left)
                     }
                 }
 
@@ -152,68 +140,48 @@ ApplicationWindow
 
                     opacity: 0.5
 
-                    ColoredButton {
+                    MultiTouchColoredButton {
                         anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
                         color: "blue"
                         height: this.width
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "X"
 
-                        onPressedChanged: {
-                            if (pressed) {
-                                emuView.addButtonPress(0, EmuPad.Button_X)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_X)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_X)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_X)
                     }
 
-                    ColoredButton {
+                    MultiTouchColoredButton {
                         anchors {right: parent.right; verticalCenter: parent.verticalCenter}
                         color: "red"
                         height: this.width
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "A"
 
-                        onPressedChanged: {
-                            if (pressed) {
-                                emuView.addButtonPress(0, EmuPad.Button_A)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_A)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_A)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_A)
                     }
 
-                    ColoredButton {
+                    MultiTouchColoredButton {
                         anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
                         color: "yellow"
                         height: this.width
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "B"
 
-                        onPressedChanged: {
-                            if (pressed) {
-                                emuView.addButtonPress(0, EmuPad.Button_B)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_B)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_B)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_B)
                     }
 
-                    ColoredButton {
+                    MultiTouchColoredButton {
                         anchors {left: parent.left; verticalCenter: parent.verticalCenter}
                         color: "green"
                         height: this.width
                         width: _baseUnitButtonWidth * frameItem.scalingFactor
                         text: "Y"
 
-                        onPressedChanged: {
-                            if (pressed) {
-                                emuView.addButtonPress(0, EmuPad.Button_Y)
-                            } else {
-                                emuView.removeButtonPress(0, EmuPad.Button_Y)
-                            }
-                        }
+                        onPressed: emuView.addButtonPress(0, EmuPad.Button_Y)
+                        onReleased: emuView.removeButtonPress(0, EmuPad.Button_Y)
                     }
                 }
             }

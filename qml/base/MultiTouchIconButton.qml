@@ -15,26 +15,20 @@
 
 import QtQuick 2.0
 
-Rectangle {
+Image {
     id: button
 
-    radius: this.width / 2
+    signal pressed()
+    signal released()
 
-    property alias text: buttonText.text
-    property alias pressed: buttonArea.pressed
-    signal onPressedChanged()
-
-    Text {
-        id: buttonText
-        anchors.centerIn: parent
-        font.pointSize: parent.width / 2
-        font.bold: true
-        opacity: 0.9
-    }
-
-    MouseArea {
+    MultiPointTouchArea {
         id: buttonArea
         anchors.fill: parent
-        onPressedChanged: button.onPressedChanged()
+
+        minimumTouchPoints: 1
+        maximumTouchPoints: 1
+
+        onPressed: button.pressed()
+        onReleased: button.released()
     }
 }
