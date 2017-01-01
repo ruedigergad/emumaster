@@ -29,8 +29,15 @@ QSGNode* FrameItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
     }
 
     if (! m_currentFrame.isNull()) {
+        QSGTexture *oldTexture = node->texture();
+
         QSGTexture *texture = window()->createTextureFromImage(m_currentFrame);
         node->setTexture(texture);
+
+        if (oldTexture)
+        {
+            delete oldTexture;
+        }
     }
 
     node->setRect(boundingRect());
