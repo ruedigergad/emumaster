@@ -52,6 +52,7 @@ private:
 	QTime m_fpsCounterTime;
 
     void paintFps(QPainter *painter);
+    void printFps();
 };
 
 #endif // FRAMEITEM_H

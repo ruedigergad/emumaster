@@ -27,7 +27,22 @@ void FrameItem::paint(QPainter *painter)
     if (! m_currentFrame.isNull()) {
         painter->drawImage(contentsBoundingRect(), m_currentFrame);
         m_emuView->hostInput()->paint(painter);
-        paintFps(painter);
+//        paintFps(painter);
+        printFps();
+    }
+}
+
+
+void FrameItem::printFps()
+{
+    // calculate fps
+    m_fpsCounter++;
+    if (m_fpsCounterTime.elapsed() >= 1000) {
+        m_fpsCount = m_fpsCounter;
+        m_fpsCounter = 0;
+        m_fpsCounterTime.restart();
+
+        qDebug() << "FPS:" << m_fpsCount;
     }
 }
 
