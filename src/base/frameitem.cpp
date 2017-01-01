@@ -48,7 +48,7 @@ void FrameItem::printFps()
         m_fpsCounter = 0;
         m_fpsCounterTime.restart();
 
-        qDebug() << "FPS:" << m_fpsCount;
+        fpsUpdated(m_fpsCount);
     }
 }
 

@@ -35,6 +35,9 @@ public:
 
     Q_INVOKABLE void setEmuView(QObject *emuView);
     
+signals:
+    void fpsUpdated(int fps);
+
 public slots:
     void handleNewFrame(QImage frame);
 

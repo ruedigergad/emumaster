@@ -24,10 +24,11 @@ ApplicationWindow
 
             FrameItem {
                 id: frameItem
+                anchors.fill: parent
 
                 property double scalingFactor: frameItem.width / _baseUnitWidth
 
-                anchors.fill: parent
+                onFpsUpdated: console.log("FPS: " + fps)
 
                 IconButton {
                     icon.source: "../../data/buttons/settings.png"
