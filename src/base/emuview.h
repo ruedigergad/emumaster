@@ -70,9 +70,10 @@ public:
 
 	void disableSafetyTimer();
 
-    HostInput* hostInput() { return m_hostInput; };
+    HostInput* hostInput() { return m_hostInput; }
 
-    Q_INVOKABLE void sleepMs(unsigned long msecs) { QThread::msleep(msecs); };
+    Q_INVOKABLE void sleepMs(unsigned long msecs) { QThread::msleep(msecs); }
+    Q_INVOKABLE void addButtonPress(int pad, int buttonPress);
 
 public slots:
 	bool close();
@@ -144,6 +145,8 @@ private:
 	bool m_swipeEnabled;
 	bool m_runInBackground;
 	bool m_lrButtonsVisible;
+
+    int *m_padButtonsPressed;
 };
 
 inline QString EmuView::error() const

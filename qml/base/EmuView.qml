@@ -94,6 +94,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("Up clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_Up)
                         }
                     }
 
@@ -104,6 +105,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("Right clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_Right)
                         }
                     }
 
@@ -114,6 +116,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("Down clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_Down)
                         }
                     }
 
@@ -124,6 +127,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("Left clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_Left)
                         }
                     }
                 }
@@ -145,6 +149,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("X clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_X)
                         }
                     }
 
@@ -157,6 +162,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("A clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_A)
                         }
                     }
 
@@ -169,6 +175,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("B clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_B)
                         }
                     }
 
@@ -181,6 +188,7 @@ ApplicationWindow
 
                         onClicked: {
                             console.log("Y clicked...")
+                            emuView.addButtonPress(0, EmuPad.Button_Y)
                         }
                     }
                 }

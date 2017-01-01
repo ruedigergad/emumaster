@@ -27,6 +27,7 @@
 #include "hostinputdevice.h"
 #include "touchinputdevice.h"
 #include "stringlistproxy.h"
+#include "memutils.h"
 #include <QQuickView>
 #include <QQmlContext>
 #include <QtQml>
@@ -63,6 +64,10 @@ EmuView::EmuView(Emu *emu, const QString &diskFileName, QQuickView *view, QObjec
 
 	Configuration::setupAppInfo();
 	pathManager.setCurrentEmu(m_emu->name());
+
+    int nPads = 2;
+    m_padButtonsPressed = new int [nPads];
+    memset(m_padButtonsPressed, 0, sizeof(int) * nPads);
 
 	m_thread = new EmuThread(m_emu);
 	m_hostInput = new HostInput(m_emu);
@@ -269,8 +274,20 @@ void EmuView::onFrameGenerated(bool videoOn)
     if (videoOn) {
 		emit videoFrameChanged(m_emu->frame().copy(m_emu->videoSrcRect().toRect()));
     }
+
 	// sync input with the emulation
-	m_hostInput->sync();
+    //m_hostInput->sync();
+    EmuInput *emuInput = m_emu->input();
+    memset32(emuInput, 0, sizeof(EmuInput)/4);
+    emuInput->pad[0].setButtons(m_padButtonsPressed[0]);
+    m_padButtonsPressed[0] = 0;
+    emuInput->pad[1].setButtons(m_padButtonsPressed[1]);
+    m_padButtonsPressed[1] = 0;
+}
+
+void EmuView::addButtonPress(int pad, int buttonPress)
+{
+    m_padButtonsPressed[pad] |= buttonPress;
 }
 
 int EmuView::determineLoadSlot(const QStringList &args)
