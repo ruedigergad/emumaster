@@ -19,6 +19,7 @@ Rectangle {
     id: button
 
     radius: this.width / 2
+    antialiasing: false
 
     property alias text: buttonText.text
 
@@ -30,7 +31,6 @@ Rectangle {
         anchors.centerIn: parent
         font.pointSize: parent.width / 2
         font.bold: true
-        opacity: 0.9
     }
 
     MultiPointTouchArea {
@@ -42,5 +42,7 @@ Rectangle {
 
         onPressed: button.pressed()
         onReleased: button.released()
+        onCanceled: button.released()
+        onGestureStarted: button.released()
     }
 }

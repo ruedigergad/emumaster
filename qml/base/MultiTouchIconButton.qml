@@ -21,6 +21,8 @@ Image {
     signal pressed()
     signal released()
 
+    smooth: false
+
     MultiPointTouchArea {
         id: buttonArea
         anchors.fill: parent
@@ -30,5 +32,7 @@ Image {
 
         onPressed: button.pressed()
         onReleased: button.released()
+        onCanceled: button.released()
+        onGestureStarted: button.released()
     }
 }
