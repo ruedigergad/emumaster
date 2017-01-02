@@ -50,7 +50,7 @@ ApplicationWindow
 
                 property double scalingFactor: frameItem.width / _baseUnitWidth
 
-                onFpsUpdated: console.log("FPS: " + fps)
+                onFpsUpdated: fpsText.text = "FPS: " + fps
 
                 IconButton {
                     icon.source: "../../data/buttons/settings.png"
@@ -184,6 +184,32 @@ ApplicationWindow
                         onReleased: emuView.removeButtonPress(0, EmuPad.Button_Y)
                     }
                 }
+
+                Item {
+                    anchors {bottom: parent.bottom; horizontalCenter: parent.horizontalCenter}
+
+                    height: this.width/2
+                    width: _baseControlBoxWidth * 0.75 * frameItem.scalingFactor
+
+                    IconButton {
+                        icon.source: "../../data/buttons/select.png"
+                        scale: frameItem.scalingFactor
+                        anchors {left: parent.left; bottom: parent.bottom}
+                    }
+                    IconButton {
+                        icon.source: "../../data/buttons/start.png"
+                        scale: frameItem.scalingFactor
+                        anchors {right: parent.right; bottom: parent.bottom}
+                    }
+                }
+            }
+
+            Text {
+                id: fpsText
+                anchors {top: parent.top; horizontalCenter: parent.horizontalCenter}
+                font.pointSize: _baseUnitButtonWidth / 2
+                color: "red"
+                text: "FPS:"
             }
         }
     }
