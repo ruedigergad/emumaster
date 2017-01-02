@@ -41,6 +41,7 @@ QSGNode* FrameItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
     QSGSimpleTextureNode *node = static_cast<QSGSimpleTextureNode *>(oldNode);
     if (!node) {
         node = new QSGSimpleTextureNode();
+        node->setRect(boundingRect());
     }
 
     if (! m_currentFrame.isNull()) {
@@ -55,7 +56,6 @@ QSGNode* FrameItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
         }
     }
 
-    node->setRect(boundingRect());
     updateFps();
 
     return node;
