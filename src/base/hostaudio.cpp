@@ -19,6 +19,7 @@
 #include <limits.h>
 #include <QDebug>
 
+#ifdef MEEGO_EDITION_HARMATTAN
 static void contextStreamCallback(pa_context *context, void *userdata)
 {
 	 if (!context || !userdata)
@@ -38,6 +39,7 @@ static void contextStreamCallback(pa_context *context, void *userdata)
 		 break;
 	 }
 }
+#endif
 
 /*!
 	\class HostAudio
@@ -46,10 +48,12 @@ static void contextStreamCallback(pa_context *context, void *userdata)
 
 /*! Creates a HostAudio object. */
 HostAudio::HostAudio(Emu *emu) :
+#ifdef MEEGO_EDITION_HARMATTAN
 	m_mainloop(0),
 	m_context(0),
 	m_api(0),
 	m_stream(0),
+#endif
 	m_emu(emu)
 {
 }
@@ -63,6 +67,7 @@ HostAudio::~HostAudio()
 /*! Starts up audio streaming to the host. */
 void HostAudio::open()
 {
+#ifdef MEEGO_EDITION_HARMATTAN
 	m_mainloop = pa_threaded_mainloop_new();
 	if (!m_mainloop) {
 		qDebug("Could not acquire PulseAudio main loop");
@@ -76,11 +81,13 @@ void HostAudio::open()
 		qDebug("Could not acquire PulseAudio device context");
 		return;
 	}
+#endif
 #if defined(MEEGO_EDITION_HARMATTAN)
 	if (pa_context_connect(m_context, 0, PA_CONTEXT_NOFLAGS, 0) < 0) {
 #elif defined(Q_WS_MAEMO_5)
 	if (pa_context_connect(m_context, 0, (pa_context_flags_t)0, 0) < 0) {
 #endif
+#ifdef MEEGO_EDITION_HARMATTAN
 		int error = pa_context_errno(m_context);
 		qDebug("Could not connect to PulseAudio server: %s", pa_strerror(error));
 		return;
@@ -122,11 +129,13 @@ void HostAudio::open()
 	waitForStreamReady();
 
 	pa_threaded_mainloop_unlock(m_mainloop);
+#endif
 }
 
 /*! Stops audio streaming. */
 void HostAudio::close()
 {
+#ifdef MEEGO_EDITION_HARMATTAN
 	if (m_mainloop)
 		pa_threaded_mainloop_stop(m_mainloop);
 	if (m_stream) {
@@ -142,16 +151,19 @@ void HostAudio::close()
 		pa_threaded_mainloop_free(m_mainloop);
 		m_mainloop = 0;
 	}
+#endif
 }
 
 /*! Streams a frame of audio from emulated system to the host. */
 void HostAudio::sendFrame()
 {
+#ifdef MEEGO_EDITION_HARMATTAN
 	if (!m_stream)
 		return;
 
 	pa_threaded_mainloop_lock(m_mainloop);
 	void *data;
+#endif
 #if defined(MEEGO_EDITION_HARMATTAN)
 	size_t size = -1;
 	pa_stream_begin_write(m_stream, &data, &size);
@@ -160,21 +172,26 @@ void HostAudio::sendFrame()
 	static char buf[4096];
 	data = buf;
 #endif
+#ifdef MEEGO_EDITION_HARMATTAN
 	size = qMin(size, pa_stream_writable_size(m_stream));
 	if (size)
 		size = m_emu->fillAudioBuffer(reinterpret_cast<char *>(data), size);
 	if (size)
 		pa_stream_write(m_stream, data, size, 0, 0, PA_SEEK_RELATIVE);
+#endif
 #if defined(MEEGO_EDITION_HARMATTAN)
 	else
 		pa_stream_cancel_write(m_stream);
 #endif
+#ifdef MEEGO_EDITION_HARMATTAN
 	pa_threaded_mainloop_unlock(m_mainloop);
+#endif
 }
 
 /*! \internal */
 void HostAudio::waitForStreamReady()
 {
+#ifdef MEEGO_EDITION_HARMATTAN
 	pa_context_state_t context_state = pa_context_get_state(m_context);
 	while (context_state != PA_CONTEXT_READY) {
 		context_state = pa_context_get_state(m_context);
@@ -189,4 +206,5 @@ void HostAudio::waitForStreamReady()
 		}
 		pa_threaded_mainloop_wait(m_mainloop);
 	}
+#endif
 }

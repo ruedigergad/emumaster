@@ -19,8 +19,11 @@
 class Emu;
 #include "base_global.h"
 #include <QObject>
+
+#ifdef MEEGO_EDITION_HARMATTAN
 #include <pulse/pulseaudio.h>
 #include <pulse/stream.h>
+#endif
 
 class BASE_EXPORT HostAudio : public QObject
 {
@@ -33,14 +36,19 @@ public:
 	void close();
 
 	void sendFrame();
+
+#ifdef MEEGO_EDITION_HARMATTAN
 	pa_threaded_mainloop *mainloop() { return m_mainloop; }
+#endif
 private:
 	void waitForStreamReady();
 
+#ifdef MEEGO_EDITION_HARMATTAN
 	pa_threaded_mainloop *m_mainloop;
 	pa_context *m_context;
 	pa_mainloop_api *m_api;
 	pa_stream *m_stream;
+#endif
 
 	Emu *m_emu;
 };
