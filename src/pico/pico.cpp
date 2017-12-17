@@ -13,7 +13,8 @@
 #include <base/pathmanager.h>
 #include <base/emuview.h>
 #include <QImage>
-#include <QApplication>
+#include <QGuiApplication>
+#include <QQuickView>
 #include <QFile>
 #include <QDir>
 
@@ -649,7 +650,9 @@ int main(int argc, char *argv[])
 {
 	if (argc < 2)
 		return -1;
-	QApplication app(argc, argv);
-	EmuView view(&picoEmu, argv[1]);
-	return app.exec();
+    QGuiApplication *app = new QGuiApplication(argc, argv);
+    QQuickView *view = new QQuickView();
+
+	EmuView emuView(&picoEmu, argv[1], view);
+	return app->exec();
 }

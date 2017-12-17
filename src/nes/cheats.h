@@ -75,12 +75,15 @@ public:
 	Q_INVOKABLE void setEnabled(int i, bool on);
 	Q_INVOKABLE void addNew(const QString &code, const QString &description);
 	Q_INVOKABLE void removeAt(int i);
+
+    virtual QHash<int, QByteArray> roleNames() const { return _roles; }
 private:
 	void setCurrent(const QList<GameGenieCode> &codes);
 
 	QStringList m_codes;
 	QStringList m_descriptions;
 	QList<bool> m_enable;
+    QHash<int, QByteArray> _roles;
 };
 
 extern NesCheats nesCheats;
