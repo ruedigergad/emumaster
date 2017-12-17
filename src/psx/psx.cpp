@@ -273,5 +273,5 @@ int main(int argc, char *argv[]) {
     QQuickView *view = new QQuickView();
 
 	EmuView emuView(&psxEmu, argv[1], view);
-	return app.exec();
+	return app->exec();
 }
