@@ -27,7 +27,7 @@ class HostInputDevice;
 #include "hostinput.h"
 #include <QImage>
 #include <QQuickView>
-class QThread;
+#include <QThread>
 //class QQuickView;
 class QSettings;
 
@@ -71,6 +71,8 @@ public:
 	void disableSafetyTimer();
 
     HostInput* hostInput() { return m_hostInput; };
+
+    Q_INVOKABLE void sleepMs(unsigned long msecs) { QThread::msleep(msecs); };
 
 public slots:
 	bool close();

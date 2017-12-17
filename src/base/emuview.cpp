@@ -93,6 +93,7 @@ EmuView::EmuView(Emu *emu, const QString &diskFileName, QQuickView *view, QObjec
 	m_safetyTimer->setSingleShot(false);
 	QObject::connect(m_safetyTimer, SIGNAL(timeout()), SLOT(onSafetyEvent()));
 
+    m_audioEnable = true;
     showEmulationView();
 
 	registerClassesInQml();
@@ -203,10 +204,10 @@ bool EmuView::close()
 void EmuView::showEmulationView()
 {
 	if (!m_running) {
-		setSwipeEnabled(m_swipeEnabled);
+		resume();
+//		setSwipeEnabled(m_swipeEnabled);
 		if (m_audioEnable)
 			m_hostAudio->open();
-		resume();
 	}
 }
 
