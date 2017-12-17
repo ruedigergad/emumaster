@@ -2,7 +2,7 @@ include(../emu.pri)
 
 DEFINES += EMU_C68K _USE_DRZ80 _ASM_DRAW_C _ASM_MEMORY_C _ASM_YM2612_C _ASM_MISC_C _ASM_CD_PICO_C _ASM_CD_MEMORY_C
 CONFIG += link_pkgconfig
-PKGCONFIG += glib-2.0 libxml-2.0 gstreamer-0.10
+PKGCONFIG += glib-2.0 libxml-2.0 gstreamer-1.0
 
 HEADERS += \
     pico.h \
