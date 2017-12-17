@@ -38,6 +38,8 @@
 #include <QImage>
 #include <QPainter>
 #include <QApplication>
+#include <QGuiApplication>
+#include <QQuickView>
 #include <QTimer>
 #include <QFileInfo>
 #include <QDir>
@@ -267,7 +269,9 @@ void PsxEmu::sl() {
 int main(int argc, char *argv[]) {
 	if (argc < 2)
 		return -1;
-	QApplication app(argc, argv);
-	EmuView view(&psxEmu, argv[1]);
+    QGuiApplication *app = new QGuiApplication(argc, argv);
+    QQuickView *view = new QQuickView();
+
+	EmuView view(&psxEmu, argv[1], view);
 	return app.exec();
 }
