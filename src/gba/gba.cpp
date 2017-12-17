@@ -25,12 +25,14 @@
 #include <base/emuview.h>
 #include <base/pathmanager.h>
 #include <QFile>
-#include <QApplication>
+#include <QGuiApplication>
+#include <QQuickView>
 //#include <qdeclarative.h>
 #include <QSemaphore>
 
 #include <QQuickView>
 #include <QtQml>
+#include <QDebug>
 
 timer_type timer[4];
 
@@ -53,13 +55,14 @@ static GbaThread gbaThread;
 
 GbaEmu gbaEmu;
 
-GbaEmu::GbaEmu() :
-	Emu("gba")
+GbaEmu::GbaEmu(QObject *parent) :
+	Emu("gba", parent)
 {
 }
 
 bool GbaEmu::init(const QString &diskPath, QString *error)
 {
+    qDebug("Initializing GbaEmu.");
 	gpuFrame = QImage(240, 160, QImage::Format_RGB16);
 	setVideoSrcRect(gpuFrame.rect());
 	setFrameRate(60);
@@ -68,8 +71,14 @@ bool GbaEmu::init(const QString &diskPath, QString *error)
 	requestQuit = false;
 
 	*error = loadBios();
-	if (error->isEmpty())
+	if (error->isEmpty()) {
+        qDebug() << "Calling setDisk: " << diskPath;
 		*error = setDisk(diskPath);
+    }
+
+    if (!error->isEmpty()) {
+        qDebug() << "Got error: " << *error;
+    }
 	return error->isEmpty();
 }
 
@@ -144,14 +153,23 @@ QString GbaEmu::loadBios()
 
 QString GbaEmu::setDisk(const QString &path)
 {
+    qDebug("GbaEmu::setDisk");
 	init_gamepak_buffer();
-	if (!gbaMemLoadGamePack(path))
+    qDebug() << "Loading game pack: " << path;
+	if (!gbaMemLoadGamePack(path)) {
+        qDebug("Loading game pack failed.");
 		return tr("Could not load disk");
+    }
+
+    qDebug("Resetting...");
 	reset();
 	skip_next_frame = 1;
 
+    qDebug("Starting gbaThread...");
 	gbaThread.start();
 	consumerSem.acquire();
+
+    qDebug("Leaving GbaEmu::setDisk.");
 	return QString();
 }
 
@@ -341,9 +359,12 @@ int main(int argc, char *argv[])
 	qmlRegisterType<GbaCheats>();
 	qmlRegisterType<GbaGameSharkValidator>("EmuMaster", 1, 0,
 										   "GbaGameSharkValidator");
-	QApplication app(argc, argv);
-	EmuView view(&gbaEmu, argv[1]);
-	return app.exec();
+    
+    QGuiApplication *app = new QGuiApplication(argc, argv);
+    QQuickView *view = new QQuickView();
+
+	EmuView emuView(&gbaEmu, argv[1], view);
+	return app->exec();
 }
 
 void GbaEmu::sl()

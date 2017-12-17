@@ -24,6 +24,7 @@
 #include <base/pathmanager.h>
 #include <base/configuration.h>
 #include <QFile>
+#include <QDebug>
 
 // This table is configured for sequential access on system defaults
 
@@ -2708,6 +2709,8 @@ static QPair<QString, QString> parseLine(QString line, int count)
 
 static void loadConfig()
 {
+    qDebug() << "Trying to load game config for (GamePack- Title,Code,Maker): " << gbaGamePackTitle << "," << gbaGamePackCode << "," << gbaGamePackMaker;
+
 	idle_loop_target_pc = 0xFFFFFFFF;
 	iwram_stack_optimize = 1;
 	bios_rom[0x39] = 0x00;
@@ -2722,45 +2725,71 @@ static void loadConfig()
 		printf("could not load gba_game_config.txt");
 		return;
 	}
+
 	while (!f.atEnd()) {
 		QString line = f.readLine();
 		count++;
 		QPair<QString, QString> vars = parseLine(line, count);
-		if (vars.first != "game_name" || vars.second != gbaGamePackTitle)
+		if (vars.first != "game_name" || vars.second != gbaGamePackTitle) {
 			continue;
+        }
+        qDebug("Found matching title at %i.", count);
 		line = f.readLine();
 		count++;
 		vars = parseLine(line, count);
-		if (vars.first != "game_code" || vars.second != gbaGamePackCode)
+		if (vars.first != "game_code" || vars.second != gbaGamePackCode) {
 			continue;
+        }
+        qDebug("Found matching code at %i.", count);
 		line = f.readLine();
 		count++;
 		vars = parseLine(line, count);
-		if (vars.first == "vender_code" && vars.second == gbaGamePackMaker)
+		if (vars.first == "vender_code" && vars.second == gbaGamePackMaker) {
+            qDebug("Found matching maker at %i.", count);
 			break;
+        }
 	}
+    
+    if (!f.atEnd()) {
+        qDebug("Trying to load config.");
+    }
+
 	while (!f.atEnd()) {
 		QString line = f.readLine();
 		count++;
 		QPair<QString, QString> vars = parseLine(line, count);
-		if (vars.first == "game_name")
+		if (vars.first == "game_name") {
+            qDebug("Found game_name at %i, returning.", count);
 			return;
-		if (vars.first == "idle_loop_eliminate_target")
+        }
+		if (vars.first == "idle_loop_eliminate_target") {
 			idle_loop_target_pc = vars.second.toInt(0, 16);
+            qDebug() << "Set idle_loop_eliminate_target: " << idle_loop_target_pc;
+        }
 		if (vars.first == "translation_gate_target") {
+            qDebug("Got a translation_gate_target.");
 			if(translation_gate_targets < MAX_TRANSLATION_GATES) {
+                qDebug() << "Setting translation_gate_target_pc[" << translation_gate_targets << "] = " << vars.second.toInt(0, 16);
 				translation_gate_target_pc[translation_gate_targets] = vars.second.toInt(0, 16);
 				translation_gate_targets++;
 			}
 		}
-		if (vars.first == "iwram_stack_optimize" && vars.second == "no")
+		if (vars.first == "iwram_stack_optimize" && vars.second == "no") {
+            qDebug("Set iwram_stack_optimize = 0");
 			iwram_stack_optimize = 0;
-		if (vars.first == "flash_rom_type" && vars.second == "128KB")
+        }
+		if (vars.first == "flash_rom_type" && vars.second == "128KB") {
 			flash_device_id = FLASH_DEVICE_MACRONIX_128KB;
-		if (vars.first == "bios_rom_hack_39" && vars.second == "yes")
+            qDebug() << "Set flash_device_id: " << flash_device_id;
+        }
+		if (vars.first == "bios_rom_hack_39" && vars.second == "yes") {
+            qDebug("Applying bios_rom_hack_39.");
 			bios_rom[0x39] = 0xC0;
-		if (vars.first == "bios_rom_hack_2C" && vars.second == "yes")
+        }
+		if (vars.first == "bios_rom_hack_2C" && vars.second == "yes") {
+            qDebug("Applying bios_rom_hack_2C.");
 			bios_rom[0x2C] = 0x02;
+        }
 	}
 }
 
