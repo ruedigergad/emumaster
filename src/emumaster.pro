@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     base \
-	snes gba \
+	amiga snes gba \
 	diskgallery 
 
 # nes gba snes psx amiga pico \
