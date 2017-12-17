@@ -128,6 +128,7 @@ HEADERS += \
     cpurec_optimizations.h
 
 SOURCES += \
+    ppu_neon.S \
 	ppu.cpp \
 	mapper.cpp \
 	disk.cpp \
