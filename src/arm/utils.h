@@ -92,9 +92,9 @@ inline int whichPowerOf2(u32 x)
 	Q_ASSERT(isPowerOf2(x));
 	Q_ASSERT(x != 0);
 	int bits = 0;
-#if !defined(QT_NO_DEBUG)
+//#if !defined(QT_NO_DEBUG)
 	int originalX = x;
-#endif
+//#endif
 	if (x >= 0x10000) {
 		bits += 16;
 		x >>= 16;
