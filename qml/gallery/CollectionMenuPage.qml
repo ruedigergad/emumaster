@@ -37,6 +37,7 @@ Page {
 			CollectionTypeButton { name: "gba" }
 			CollectionTypeButton { name: "amiga" }
 			CollectionTypeButton { name: "pico" }
+			CollectionTypeButton { name: "psx" }
 		}
 
 		PullDownMenu {
