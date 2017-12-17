@@ -21,10 +21,10 @@ unix {
     INSTALLS += target
 }
 
-QMAKE_CFLAGS_RELEASE = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
-QMAKE_CFLAGS_DEBUG = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
-QMAKE_CXXFLAGS_RELEASE = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
-QMAKE_CXXFLAGS_DEBUG = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
+QMAKE_CFLAGS_RELEASE = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=neon -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
+QMAKE_CFLAGS_DEBUG = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=neon -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
+QMAKE_CXXFLAGS_RELEASE = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=neon -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
+QMAKE_CXXFLAGS_DEBUG = -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -fmessage-length=0 -march=armv7-a -mfloat-abi=hard -mfpu=neon -marm -Wno-psabi -Wall -W -D_REENTRANT -fPIE -DMEEGO_EDITION_HARMATTAN
 
 DEFINES += BASE_PROJECT
 
