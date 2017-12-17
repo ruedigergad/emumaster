@@ -324,7 +324,7 @@ void TouchInputDevice::setGridVisible(bool on)
 
 void TouchInputDevice::setDpadAreaSize(int size)
 {
-	int rSize = qBound(160, size, 320);
+    int rSize = qBound(160, size, 16384);
 	if (m_areaSize != rSize) {
 		m_areaSize = rSize;
 		setDpadAreaDiagonalSize(m_diagonalAreaSize);
