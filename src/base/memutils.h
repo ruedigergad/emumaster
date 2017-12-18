@@ -25,7 +25,13 @@ static inline void memcpy8(void *dst, void *src, int n)
 { memcpy(dst, src, n); }
 
 #if defined(CAN_USE_NEON_INSTRUCTIONS)
-extern "C" void memset32(void *p, u32 d, int n);
+//extern "C" void memset32(void *p, u32 d, int n);
+static inline void memset32(void *p, u32 d, int n)
+{
+	u32 *p32 = (u32 *)p;
+	for (; n > 0; p32++, n--)
+		*p32 = d;
+}
 #else
 static inline void memset32(void *p, u32 d, int n)
 {

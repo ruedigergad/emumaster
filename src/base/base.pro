@@ -53,7 +53,6 @@ HEADERS += \
 #    accelinputdevice.h
 
 SOURCES += \
-    memset32_neon.S \
     hostaudio.cpp \
     hostinput.cpp \
     pathmanager.cpp \
