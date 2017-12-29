@@ -11,6 +11,6 @@ The master branch contains a somewhat experimental version.
 A more readily usable version is available in the "stable" branch:
 https://github.com/ruedigergad/emumaster/tree/stable
 
-Build of the stable branch are available in the following location:
+Builds of the stable branch are available in the following location:
 http://repo.merproject.org/obs/home:/wonko:/emumaster/sailfish_latest_armv7hl/armv7hl/
 
